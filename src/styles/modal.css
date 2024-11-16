@@ -203,6 +203,7 @@
 
 .popup__product-big_wrap {
   flex-direction: column;
+  justify-content: center;
   gap: 7px;
 }
 

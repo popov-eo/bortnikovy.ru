@@ -150,9 +150,10 @@ a {
   left: 0;
   z-index: 4;
   overflow: hidden;
-  backdrop-filter: blur(3px);
+  backdrop-filter: 0;
   inline-size: 100%;
   block-size: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .burger-menu__content {
