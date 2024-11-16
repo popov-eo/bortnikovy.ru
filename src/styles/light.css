@@ -1,0 +1,84 @@
+.page.theme_light {
+  --text-color: #303030;
+  --button-text-color: #fff;
+  --wine-color: #78153e;
+  --menu-color: #fff;
+
+
+  background-color: #C9C6C8;
+
+  .burger-menu__content {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .nav-btns_wrapper-mobile {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .header {
+    background-color: var(--menu-color);
+  }
+
+  .section {
+    background-image: url(../images/whiteCraft_section.jpg);
+  }
+
+  .recipe__title {
+    background-color: rgba(255, 255, 255, .7);
+  }
+
+  .search-input {
+    background-color: #c7c7c7;
+    color: #303030;
+  }
+
+  @media (width < 768px) {
+    .header {
+      background-image: url(../images/whiteCraft_section.jpg);
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: #303030;
+    --button-text-color: #fff;
+    --wine-color: #78153e;
+    --menu-color: #fff;
+  }
+
+  .page {
+    background-color: #C9C6C8;
+  }
+
+  .burger-menu__content {
+    background-color: var(--menu-color);
+  }
+
+  .header {
+    background-color: var(--menu-color);
+  }
+
+  .section {
+    background-image: url(../images/whiteCraft_section.jpg);
+  }
+
+  .recipe__title {
+    background-color: rgba(255, 255, 255, .7);
+  }
+
+  .nav-btns_wrapper-mobile {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .search-input {
+    background-color: #c7c7c7;
+    color: #303030;
+  }
+}
+
+@media (prefers-color-scheme: light) and ( width < 768px) {
+  .header {
+    background-image: url(../images/whiteCraft_section.jpg);
+  }
+}

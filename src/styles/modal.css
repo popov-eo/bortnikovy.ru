@@ -1,0 +1,339 @@
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.popup__title {
+  font-family: 'Podkova-Bold', serif;
+  font-size: 32px;
+  line-height: 30px;
+}
+
+.popup__image {
+  display: block;
+  max-height: 100%;
+  object-fit: cover;
+  block-size: 600px;
+}
+
+.popup__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: transparent url('../images/close.svg') center no-repeat;
+  background-size: 20px 20px;
+  transition: visibility 0s, opacity 0.3s;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+.popup_is-opened {
+  visibility: visible;
+  display: flex;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.6s;
+  pointer-events: all;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.popup_is-animated {
+  visibility: hidden;
+  display: flex;
+  opacity: 0;
+  transition: visibility 0s 0.6s, opacity 0.6s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.popup__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: var(--button-text-color);
+  overflow-y: auto;
+}
+
+.popup__content_description {
+  max-inline-size: 600px;
+  max-block-size: 90vh;
+}
+
+.popup__content_recipe {
+  max-inline-size: 600px;
+  max-block-size: 90vh;
+}
+
+.popup__content_recipe .popup__image {
+  block-size: 400px;
+}
+
+.popup__content-image {
+  overflow: hidden;
+}
+
+.popup__parameters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.popup__parameters {
+  font-family: 'Roboto-Light', sans-serif;
+}
+
+.popup__parameters span {
+  font-family: 'Roboto-Medium', sans-serif;
+}
+
+.popup__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+
+.popup__description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.popup__content::-webkit-scrollbar {
+  inline-size: 6px;
+}
+
+.popup__content::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 4px;
+}
+
+/* Корзина */
+
+.popup__busket-title {
+  display: flex;
+  font-size: 18px;
+  padding-block-end: 20px;
+  border-bottom: 1px solid currentColor;
+}
+
+.popup__busket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-block-size: 400px;
+  overflow-y: scroll;
+  padding-block: 8px;
+}
+
+.popup__busket-list::-webkit-scrollbar {
+  inline-size: 4px;
+}
+
+.popup__busket-list::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 3px;
+}
+
+.popup__busket-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.busket-item-img {
+  inline-size: 60px;
+  block-size: 60px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.popup__content_busket {
+  position: absolute;
+  inline-size: 100%;
+  max-block-size: 90vh;
+  padding: 20px;
+  bottom: 0;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+  overflow: hidden;
+}
+
+.busket-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.popup__product-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.popup__product-big_wrap {
+  flex-direction: column;
+  gap: 7px;
+}
+
+.busket-item-title {
+  font-size: 14px;
+  display: block;
+  inline-size: 130px;
+}
+
+.popup__busket-price-title {
+  display: flex;
+  justify-content: flex-end;
+  padding-block-start: 20px;
+  border-top: 1px solid currentColor;
+}
+
+.busket-item-counter {
+  gap: 0;
+}
+
+.busket-item-count_btn {
+  inline-size: 30px;
+  block-size: 30px;
+  border-radius: 15px;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0 0 10px color-mix(in srgb, currentColor 40%, transparent);
+  cursor: pointer;
+}
+
+.busket-item-count_btn:hover {
+  box-shadow: 0 0 15px color-mix(in srgb, currentColor 70%, transparent);
+  background-color: color-mix(in srgb, currentColor 4%, transparent);
+}
+
+.busket-item-count_input {
+  max-inline-size: 25px;
+  text-align: center;
+}
+
+.popup__product-price {
+  inline-size: 80px;
+  text-align: center;
+}
+
+.popup__busket-item-delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.popup__busket-item-delete:hover {
+  color: color-mix(in srgb, currentColor 50%, transparent);;
+}
+
+@media screen and (max-width: 568px) {
+  .popup__content_description {
+    inline-size: 100vw;
+    block-size: 70vh;
+  }
+
+  .popup__image {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .popup__title {
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  .popup__text-wrapper {
+    padding: 15px;
+  }
+}
+
+@media (1024px <= width) {
+  .popup__content_busket {
+    max-inline-size: 700px;
+    max-block-size: 90vh;
+    min-block-size: 500px;
+    bottom: unset;
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popup__busket-list {
+    max-block-size: 500px;
+  }
+
+  .busket-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  .popup__busket-title {
+    font-size: 24px;
+  }
+
+  .busket-item-img {
+    inline-size: 80px;
+    block-size: 80px;
+    border-radius: 40px;
+  }
+
+  .busket-item-title {
+    font-size: 18px;
+    inline-size: 240px;
+  }
+
+  .popup__product-big_wrap {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .busket-item-count_input {
+    max-inline-size: 40px;
+  }
+}
+
+@media (1440px <= width) {
+  .popup__image {
+    block-size: 90vh;
+  }
+
+  .popup__content_recipe {
+    max-inline-size: 600px;
+    max-block-size: 90vh;
+  }
+}

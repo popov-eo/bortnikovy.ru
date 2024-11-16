@@ -1,0 +1,55 @@
+/* Глобальные стили для проекта, их можно дополнять и менять по желанию */
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  background-color: #252525;
+}
+
+body {
+  margin: 0 auto;
+  color: var(--text-color);
+  font-family: var(--main-font), sans-serif;
+  font-size: 18px;
+  min-inline-size: 375px;
+  max-inline-size: 1920px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+picture {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+a {
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+input {
+  cursor: text;
+  all: unset;
+}

@@ -1,0 +1,30 @@
+.page.theme_dark {
+  --text-color: #f2d5b3;
+  --button-text-color: #212020;
+  --wine-color: #f2b3b7;
+  --menu-color: #101010;
+
+  background-color: #706E6B;
+
+  .header {
+    background-color: var(--menu-color);
+  }
+
+  .burger-menu__content {
+    background-color: rgba(0, 0, 0, .7);
+  }
+
+  .section {
+    background-image: url(../images/blackCraft_section.jpg);
+  }
+
+  .recipe__title {
+    background-color: rgba(0, 0, 0, .7);
+  }
+
+  @media (width < 768px) {
+    .header {
+      background-image: url(../images/blackCraft_section.jpg);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+:root {
+  --text-color: #f2d5b3;
+  --button-text-color: #212020;
+  --wine-color: #f2b3b7;
+  --menu-color: #101010;
+
+
+  --standart-space: 30px;
+  --min-space-size: 15px;
+  --desctop-space-size: 50px;
+  --space-main_grid-edge: 10px;
+  --space-main_grid-between: 50px;
+  --space-main_grid-outside: 40px; 
+  
+  --header-font-size: 18px;
+  --main-font: 'Roboto-regular';
+}
+@media (768px <= width) { 
+  :root {
+    --space-main_grid-edge: 20px;
+    --space-main_grid-between: 80px;
+    --space-main_grid-outside: 60px;
+  }
+}
