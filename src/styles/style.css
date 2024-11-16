@@ -1117,6 +1117,7 @@ ul.recipes__list.recipe-page {
 }
 
 .information .information-sign {
+  font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-size: 20px;
 }

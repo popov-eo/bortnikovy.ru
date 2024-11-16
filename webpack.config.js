@@ -1,9 +1,10 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // работа с HTML
-
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // очищать содержимое папки dist при сборке проекта
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // работа с CSS
+
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
     entry: {
