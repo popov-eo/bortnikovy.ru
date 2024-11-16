@@ -225,7 +225,8 @@
 
 .busket-item-count_btn {
   display: flex;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   inline-size: 30px;
   block-size: 30px;
   border-radius: 15px;
