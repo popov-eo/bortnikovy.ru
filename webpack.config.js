@@ -61,6 +61,9 @@ module.exports = {
         ]
     },
     plugins: [
+
+
+
         new HtmlWebpackPlugin({
             title: 'About',
             filename: 'index.html',
@@ -91,6 +94,9 @@ module.exports = {
             template: './src/recipies.html',
             chunks: ['recipies'],
         }),
+
+        new FaviconsWebpackPlugin('./src/images/favicon.svg'),
+
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
     ],
