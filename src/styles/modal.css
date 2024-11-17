@@ -171,6 +171,15 @@
   min-block-size: 64px;
 }
 
+.popup__busket-price {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding-block-start: 15px;
+  border-top: 1px solid currentColor;
+}
+
 .busket-item-img {
   inline-size: 60px;
   block-size: 60px;
@@ -214,11 +223,21 @@
   inline-size: 130px;
 }
 
+.popup__busket_clear-btn {
+  background-color: transparent;
+  border: none;
+  inline-size: 35px;
+  block-size: 35px;
+  cursor: pointer;
+}
+
+.popup__busket_clear-btn:hover svg {
+  fill: color-mix(in srgb, currentColor 40%, transparent);
+}
+
 .popup__busket-price-title {
   display: flex;
   justify-content: flex-end;
-  padding-block-start: 20px;
-  border-top: 1px solid currentColor;
 }
 
 .busket-item-counter {
