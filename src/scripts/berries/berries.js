@@ -15,7 +15,14 @@ if (localStorage.getItem("cart") === null) {
     localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
-const savedCart = JSON.parse(localStorage.getItem("cart"));
+let savedCart;
+
+try {
+    savedCart = JSON.parse(localStorage.getItem("cart")) || []
+} catch (error) {
+    console.error("Ошибка парсинга JSON:", error);
+    savedCart = []; // Защитное значение по умолчанию
+};
 
 myCart.products = savedCart.products;
 cartNum.textContent = myCart.count;
