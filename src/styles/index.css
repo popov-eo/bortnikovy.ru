@@ -1,8 +1,8 @@
 @import '../fonts/fonts.css';
 @import './globals.css';
 @import './variables.css';
-@import './dark.css';
-@import './light.css';
 @import './style.css';
 @import './cards-style.css';
 @import './modal.css';
+@import './dark.css';
+@import './light.css';
