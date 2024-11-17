@@ -15,6 +15,7 @@ if (localStorage.getItem("cart") === null) {
   localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
+console.log(JSON.parse(localStorage.getItem("cart")))
 const savedCart = JSON.parse(localStorage.getItem("cart"));
 
 myCart.products = savedCart.products;
