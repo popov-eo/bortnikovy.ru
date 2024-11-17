@@ -93,8 +93,8 @@ a {
   display: flex;
   flex-direction: column;
   grid-area: header;
-  padding-inline: var(--min-space-size);
   padding-bottom: 50px;
+  padding-inline: var(--min-space-size);
   box-shadow: 0px 5px 25px rgba(0, 0, 0, .1);
   background-color: var(--menu-color);
 }
@@ -154,10 +154,10 @@ a {
   left: 0;
   z-index: 4;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: 0;
   inline-size: 100%;
   block-size: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .burger-menu__content {
@@ -867,9 +867,9 @@ ul.recipes__list.recipe-page {
   flex-direction: row;
   flex-wrap: wrap;
   justify-self: start;
-  align-self: start;
   justify-content: center;
   gap: 20px;
+  align-self: start;
   inline-size: 100%;
 }
 
@@ -1123,8 +1123,8 @@ ul.recipes__list.recipe-page {
 
 .information .information-sign {
   font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
   font-size: 20px;
+  font-style: normal;
 }
 
 .information-wrapper {

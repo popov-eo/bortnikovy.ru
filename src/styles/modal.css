@@ -231,7 +231,7 @@
   align-items: center;
   inline-size: 30px;
   block-size: 30px;
-  border-radius: 15px;
+  border-radius: 3px;
   border: none;
   background-color: transparent;
   box-shadow: 0 0 10px color-mix(in srgb, currentColor 40%, transparent);
@@ -326,6 +326,10 @@
   .popup__product-big_wrap {
     flex-direction: row;
     gap: 15px;
+  }
+
+  .busket-item-count_btn {
+    border-radius: 15px;
   }
 
   .busket-item-count_input {
