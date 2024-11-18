@@ -47,8 +47,8 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         cardDescription.append(createDescription(i));
     })
 
-    cardElement.querySelector('.card__price-cutting').textContent = `${priceCutting}`;
-    cardElement.querySelector('.card__price-vine').textContent = `${priceVine}`;
+    cardElement.querySelector('.card__price-cutting').textContent = priceCutting;
+    cardElement.querySelector('.card__price-vine').textContent = priceVine;
 
     cardElement.querySelector('.card__button-popup').addEventListener('click', (evt) => {
         openDescriptionPopup(evt, cardText);
