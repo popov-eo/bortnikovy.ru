@@ -16,8 +16,11 @@ function createDescription(txt) {
     return paragraphElement;
 }
 
-function changeTextCartBtn(button) {
-    button.textContent = "В корзину";
+function changeTextCartBtn(button, after) {
+    button.textContent = 'В корзину';
+    button.classList.remove('animated-gradient');
+    button.classList.add("btn");
+    button.classList.remove("btnForAnimation");
 }
 
 //Создание карточки
@@ -66,7 +69,10 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         const card = evt.target.closest(".card");
         const cartButton = card.querySelector(".btn__basket_price-cutting");
         cartButton.textContent = 'Отправлено';
-        setTimeout(changeTextCartBtn, 1500, cartButton);
+        cartButton.classList.remove("btn");
+        cartButton.classList.add("btnForAnimation");
+        cartButton.classList.add("animated-gradient");
+        setTimeout(changeTextCartBtn, 1200, cartButton);
         const quantity = 1;
         const type = 'grape';
         const cutting = true;
@@ -82,9 +88,12 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         const card = evt.target.closest(".card");
         const cartButton = card.querySelector(".btn__basket_price-vine");
         cartButton.textContent = 'Отправлено';
-        setTimeout(changeTextCartBtn, 1500, cartButton);
+        cartButton.classList.remove("btn");
+        cartButton.classList.add("btnForAnimation");
+        cartButton.classList.add("animated-gradient");
+        setTimeout(changeTextCartBtn, 1200, cartButton);
         const quantity = 1;
-        const type = 'grape';
+        const type = "grape";
         const cutting = false;
         const product = new ProductGrape(card, quantity, type, cutting);
         const savedCart = JSON.parse(localStorage.getItem("cart"));

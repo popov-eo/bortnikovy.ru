@@ -224,10 +224,9 @@
   padding: 8px 0;
   font-size: 18px;
   inline-size: 125px;
-  transition: background-image ease 1s;
 }
 
-.btn__basket:focus {
+.animated-gradient {
   content: '👉';
   background-image: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18, #FF3706);
   background-size: 500% 400%;

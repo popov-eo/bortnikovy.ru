@@ -50,6 +50,20 @@
   inline-size: 100%;
 }
 
+.btnForAnimation {
+  border: none;
+  border-radius: 5px;
+  padding-block: 20px;
+  overflow: hidden;
+  color: var(--button-text-color);
+  font-family: 'Roboto-medium';
+  font-size: 20px;
+  line-height: 18px;
+  background-color: var(--text-color);
+  cursor: pointer;
+  inline-size: 100%;
+}
+
 iframe {
   border: none;
 }

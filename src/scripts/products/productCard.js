@@ -16,6 +16,13 @@ function createDescription(txt) {
     return paragraphElement;
 }
 
+function changeTextCartBtn(button, after) {
+    button.textContent = 'В корзину';
+    button.classList.remove('animated-gradient');
+    button.classList.add("btn");
+    button.classList.remove("btnForAnimation");
+}
+
 function createCard(name, link, text, price){
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
 
@@ -37,7 +44,10 @@ function createCard(name, link, text, price){
         const card = evt.target.closest(".card");
         const cartButton = card.querySelector(".btn__basket_price-cutting");
         cartButton.textContent = 'Отправлено';
-        setTimeout(changeTextCartBtn, 1500, cartButton);
+        cartButton.classList.remove("btn");
+        cartButton.classList.add("btnForAnimation");
+        cartButton.classList.add("animated-gradient");
+        setTimeout(changeTextCartBtn, 1200, cartButton);
         const quantity = 1;
         const type = 'product';
         const cutting = true;
