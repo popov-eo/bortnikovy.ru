@@ -35,6 +35,9 @@ function createCard(name, link, text, price){
 
     cardElement.querySelector('.btn__basket').addEventListener('click', (evt) => {
         const card = evt.target.closest(".card");
+        const cartButton = card.querySelector(".btn__basket_price-cutting");
+        cartButton.textContent = 'Отправлено';
+        setTimeout(changeTextCartBtn, 1500, cartButton);
         const quantity = 1;
         const type = 'product';
         const cutting = true;

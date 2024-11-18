@@ -224,11 +224,13 @@
   padding: 8px 0;
   font-size: 18px;
   inline-size: 125px;
+  transition: background-image ease 1s;
 }
 
 .btn__basket:focus {
-  background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18, #FF3706);
-  background-size: 400% 400%;
+  content: '👉';
+  background-image: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18, #FF3706);
+  background-size: 500% 400%;
   animation: gradient 2s ease infinite;
 }
 
