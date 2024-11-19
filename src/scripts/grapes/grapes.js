@@ -22,6 +22,7 @@ try {
     savedCart = JSON.parse(localStorage.getItem("cart")) || [];
 } catch (error) {
     console.error("Ошибка парсинга JSON:", error);
+    localStorage.setItem("cart", JSON.stringify(myCart));
     savedCart = []; // Защитное значение по умолчанию
 };
 
