@@ -13,20 +13,21 @@ const page = document.querySelector('.page');
 const cart = document.querySelector('.popup__busket');
 const cartNum = document.querySelector("#cart_num");
 
-if (localStorage.getItem("cart") === null) {
+const myCart = new Cart();
+
+if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === undefined) {
     localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
-let savedCart;
+let savedCart = [];
 
 try {
     savedCart = JSON.parse(localStorage.getItem("cart")) || []
 } catch (error) {
     console.error("Ошибка парсинга JSON:", error);
+    localStorage.setItem("cart", JSON.stringify(myCart));
     savedCart = []; // Защитное значение по умолчанию
 };
-
-const myCart = new Cart();
 
 myCart.products = savedCart.products;
 cartNum.textContent = myCart.count;

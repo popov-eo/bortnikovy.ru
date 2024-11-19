@@ -12,9 +12,8 @@ const cartNum = document.querySelector("#cart_num");
 const myCart = new Cart();
 
 if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === undefined) {
-  localStorage.setItem("cart", JSON.stringify(myCart));
+    localStorage.setItem("cart", JSON.stringify(myCart));
 }
-
 
 let savedCart = [];
 

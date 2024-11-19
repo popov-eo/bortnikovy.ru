@@ -11,16 +11,17 @@ const cartNum = document.querySelector("#cart_num");
 
 const myCart = new Cart();
 
-if (localStorage.getItem("cart") === null) {
+if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === undefined) {
     localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
-let savedCart;
+let savedCart = [];
 
 try {
     savedCart = JSON.parse(localStorage.getItem("cart")) || []
 } catch (error) {
     console.error("Ошибка парсинга JSON:", error);
+    localStorage.setItem("cart", JSON.stringify(myCart));
     savedCart = []; // Защитное значение по умолчанию
 };
 
