@@ -15,7 +15,7 @@ if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === un
     localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
-let savedCart = [];
+let savedCart;
 
 try {
     savedCart = JSON.parse(localStorage.getItem("cart")) || []
@@ -34,7 +34,6 @@ document.querySelector('.busket').addEventListener('click', () => {
   popupContainerFill();
 })
 
-//Вывод через цикл карточек рецептов
 productCards.forEach(function(element){
   cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
 })
@@ -43,7 +42,7 @@ document.querySelector('.sorting__btn-perepel').addEventListener('click', (evt) 
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
     if (element.type.includes('перепёлочка')) {
-      cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
+      cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
     }
   })
 })
@@ -52,7 +51,7 @@ document.querySelector('.sorting__btn-berries').addEventListener('click', (evt) 
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
     if (element.type.includes('калинка-малинка')) {
-      cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
+      cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
     }
   })
 })
@@ -60,7 +59,7 @@ document.querySelector('.sorting__btn-berries').addEventListener('click', (evt) 
 document.querySelector('.sorting__btn-all').addEventListener('click', (evt) => {
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
-    cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
+    cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
   })
 })
 
@@ -68,7 +67,7 @@ document.querySelector('.sorting__btn-vegetables').addEventListener('click', (ev
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
     if (element.type.includes('огородная братва')) {
-      cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
+      cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
     }
   })
 })

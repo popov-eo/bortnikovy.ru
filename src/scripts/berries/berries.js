@@ -15,7 +15,7 @@ if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === un
     localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
-let savedCart = [];
+let savedCart;
 
 try {
     savedCart = JSON.parse(localStorage.getItem("cart")) || []

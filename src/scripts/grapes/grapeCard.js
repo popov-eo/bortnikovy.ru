@@ -16,11 +16,15 @@ function createDescription(txt) {
     return paragraphElement;
 }
 
-function changeTextCartBtn(button, after) {
+function changeTextCartBtn(button) {
     button.textContent = 'В корзину';
     button.classList.remove('animated-gradient');
     button.classList.add("btn");
     button.classList.remove("btnForAnimation");
+}
+
+function deleteBusketBtn(button) {
+    button.classList.add("hidden");
 }
 
 //Создание карточки
@@ -92,6 +96,7 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         cartButton.classList.add("btnForAnimation");
         cartButton.classList.add("animated-gradient");
         setTimeout(changeTextCartBtn, 1200, cartButton);
+        setTimeout(deleteBusketBtn, 1200, cartButton);
         const quantity = 1;
         const type = "grape";
         const cutting = false;
@@ -103,16 +108,24 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         cartNum.textContent = myCart.count;
     })
 
+    const cardDecorTop = cardElement.querySelector('.decor-top');
+    const cardDecorBottom = cardElement.querySelector('.decor-bottom')
+
     if (filterColor === 'красный') {
-        cardElement.classList.add('red-outline');
+        cardDecorTop.classList.add('red-outline');
+        cardDecorBottom.classList.add('red-outline');
     } else if (filterColor === 'белый') {
-        cardElement.classList.add('white-outline');
+        cardDecorTop.classList.add('white-outline');
+        cardDecorBottom.classList.add('white-outline');
     } else if (filterColor === 'черный') {
-        cardElement.classList.add('black-outline');
+        cardDecorTop.classList.add('black-outline');
+        cardDecorBottom.classList.add('black-outline');
     } else if (filterColor === 'розовый') {
-        cardElement.classList.add('pink-outline');
+        cardDecorTop.classList.add('pink-outline');
+        cardDecorBottom.classList.add('pink-outline');
     } else {
-        cardElement.classList.add('technical-outline');
+        cardDecorTop.classList.add('technical-outline');
+        cardDecorBottom.classList.add('technical-outline');
     }
 
     return cardElement;

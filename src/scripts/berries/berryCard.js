@@ -76,14 +76,20 @@ function createCard(filterColor, name, link, genetics, color, taste, maturity, b
         openImagePopup(evt, page);
     })
 
+    const cardDecorTop = cardElement.querySelector('.decor-top');
+    const cardDecorBottom = cardElement.querySelector('.decor-bottom')
+
     if (filterColor === 'клубника') {
-        cardElement.classList.add('red-outline');
+        cardDecorTop.classList.add('red-outline');
+        cardDecorBottom.classList.add('red-outline');
         const spinesElement = cardElement.querySelector('.spines-item');
         spinesElement.classList.add('invisible');
     } else if (filterColor === 'ежевика') {
-        cardElement.classList.add('black-outline');
+        cardDecorTop.classList.add('black-outline');
+        cardDecorBottom.classList.add('black-outline');
     } else if (filterColor === 'малина') {
-        cardElement.classList.add('pink-outline');
+        cardDecorTop.classList.add('pink-outline');
+        cardDecorBottom.classList.add('pink-outline');
     }
 
     return cardElement;

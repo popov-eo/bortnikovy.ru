@@ -23,7 +23,7 @@ function changeTextCartBtn(button, after) {
     button.classList.remove("btnForAnimation");
 }
 
-function createCard(name, link, text, price){
+function createCard(name, link, text, price, type){
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
 
     //Передача информации о карточки
@@ -67,6 +67,20 @@ function createCard(name, link, text, price){
     cardElement.querySelector('.card__image-wrapper').addEventListener('click', (evt) => {
         openImagePopup(evt, page);
     })
+
+    const cardDecorTop = cardElement.querySelector('.decor-top');
+    const cardDecorBottom = cardElement.querySelector('.decor-bottom')
+
+    if (type === 'калинка-малинка') {
+        cardDecorTop.classList.add('red-outline');
+        cardDecorBottom.classList.add('red-outline');
+    } else if (type === 'огородная братва') {
+        cardDecorTop.classList.add('white-outline');
+        cardDecorBottom.classList.add('white-outline');
+    } else if (type === 'перепёлочка') {
+        cardDecorTop.classList.add('technical-outline');
+        cardDecorBottom.classList.add('technical-outline');
+    }
 
     return cardElement;
 }
