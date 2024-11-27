@@ -51,7 +51,9 @@ function isCutting(cardElement, cartButtonCutting, productCuttingQuantity) {
     inputCount.classList.add("busket-item-count_input");
     inputCount.classList.add("card__count-input-cutting");
     inputCount.setAttribute("type", "text");
-    inputCount.setAttribute("value", productCuttingQuantity);
+    inputCount.setAttribute("value", `${productCuttingQuantity}`);
+    console.log(productCuttingQuantity);
+    inputCount.value = productCuttingQuantity;
 
     const incrBtn = document.createElement("button");
     incrBtn.classList.add("busket-item-count_btn");
@@ -86,7 +88,8 @@ function isVine(cardElement, cartButtonVine, productVineQuantity) {
     inputCount.classList.add("busket-item-count_input");
     inputCount.classList.add("card__count-input-vine");
     inputCount.setAttribute("type", "text");
-    inputCount.setAttribute("value", productVineQuantity);
+    inputCount.setAttribute("value", `${productVineQuantity}`);
+    inputCount.value = productVineQuantity;
 
     const incrBtn = document.createElement("button");
     incrBtn.classList.add("busket-item-count_btn");
@@ -293,6 +296,8 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         } else if (i.name === `${name} саженец`) {
             return productVineInCart = true, productVineQuantity = i.quantity;
         }
+
+        console.log(productCuttingInCart, productVineInCart)
     })
 
     const cartButtonCutting = cardElement.querySelector(".btn__basket_price-cutting");
@@ -319,6 +324,7 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         myCart.addProduct(product);
         localStorage.setItem("cart", JSON.stringify(myCart));
         cartNum.textContent = myCart.count;
+        let productCuttingQuantity = 1;
         setTimeout(isCutting, 1000, cardElement, cartButtonCutting, productCuttingQuantity);
         setTimeout(increaseCountOfProductCutting, 1000, card);
         setTimeout(reduceCountOfProductCutting, 1000, card, cartButtonCutting);
@@ -352,6 +358,7 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         myCart.addProduct(product);
         localStorage.setItem("cart", JSON.stringify(myCart));
         cartNum.textContent = myCart.count;
+        let productVineQuantity = 1;
         setTimeout(isVine, 1000, cardElement, cartButtonVine, productVineQuantity);
         setTimeout(increaseCountOfProductVine, 1000, card);
         setTimeout(reduceCountOfProductVine, 1000, card, cartButtonVine);

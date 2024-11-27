@@ -50,6 +50,8 @@ clearCart.addEventListener("click", () => {
     cartNum.textContent = myCart.count;
     myCart.products = savedCart.products;
 
+    console.log(savedCart.products)
+
     grapeCards.forEach(function(element){
         cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
     })

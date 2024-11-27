@@ -187,18 +187,22 @@ function popupContainerFill() {
             cartNum.textContent = myCart.count;
             localStorage.setItem("cart", JSON.stringify(myCart));
             popupContainerFill();
-            let name
+            let name;
             if (product.type === 'grape' && product.cutting) {
                 name = product.name.split(' черенок').splice(0, 1).toString();
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === name) {
+                        i.querySelector('.card__count-input-cutting').value = quantityOfProduct;
+                    }
+                })
             } else if (product.type === 'grape' && !product.cutting) {
                 name = product.name.split(' саженец').splice(0, 1).toString();
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === name) {
+                        i.querySelector('.card__count-input-vine').value = quantityOfProduct;
+                    }
+                })
             }
-            console.log(name)
-            document.querySelectorAll('.card').forEach((i) => {
-                if (i.querySelector('.card__title').textContent === name) {
-                    i.querySelector('.card__count-input-cutting').value = quantityOfProduct;
-                }
-            })
         })
 
         reduceBtn.addEventListener("click", () => {
@@ -207,6 +211,23 @@ function popupContainerFill() {
             cartNum.textContent = myCart.count;
             localStorage.setItem("cart", JSON.stringify(myCart));
             popupContainerFill();
+            let name;
+            if (product.type === 'grape' && product.cutting) {
+                name = product.name.split(' черенок').splice(0, 1).toString();
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === name) {
+                        i.querySelector('.card__count-input-cutting').value = quantityOfProduct;
+                    }
+                })
+            } else if (product.type === 'grape' && !product.cutting) {
+                name = product.name.split(' саженец').splice(0, 1).toString();
+                name = product.name.split(' саженец').splice(0, 1).toString();
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === name) {
+                        i.querySelector('.card__count-input-vine').value = quantityOfProduct;
+                    }
+                })
+            }
         })
 
         const productDelete = document.createElement("button");
