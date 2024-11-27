@@ -77,19 +77,15 @@ function createCard(filterColor, name, link, genetics, color, taste, maturity, b
     })
 
     const cardDecorTop = cardElement.querySelector('.decor-top');
-    const cardDecorBottom = cardElement.querySelector('.decor-bottom')
 
     if (filterColor === 'клубника') {
         cardDecorTop.classList.add('red-outline');
-        cardDecorBottom.classList.add('red-outline');
         const spinesElement = cardElement.querySelector('.spines-item');
         spinesElement.classList.add('invisible');
     } else if (filterColor === 'ежевика') {
         cardDecorTop.classList.add('black-outline');
-        cardDecorBottom.classList.add('black-outline');
     } else if (filterColor === 'малина') {
         cardDecorTop.classList.add('pink-outline');
-        cardDecorBottom.classList.add('pink-outline');
     }
 
     return cardElement;

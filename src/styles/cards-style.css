@@ -42,6 +42,11 @@
   cursor: pointer;
 }
 
+.disable {
+  pointer-events: none;
+  cursor: default;
+}
+
 .sorting__btn:hover {
   background-color: rgba(255, 255, 255, .5);
 }
@@ -102,18 +107,10 @@
 
 .decor-top {
   z-index: 0;
-  inline-size: 250px;
-  block-size: 150px;
-  left: 14px;
-  top: 14px;
-}
-
-.decor-bottom {
-  inline-size: 150px;
+  inline-size: 25px;
   block-size: 100px;
-  right: 14px;
-  top: 232px;
-  border-bottom-right-radius: 45px;
+  right: 0;
+  top: 50px;
 }
 
 .card__content {

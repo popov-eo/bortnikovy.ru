@@ -2,6 +2,7 @@ const cart = document.querySelector('.popup__busket');
 const popupProductList = cart.querySelector('.popup__busket-list');
 const popupCost = document.querySelector("#popup_cost");
 const cartNum = document.querySelector("#cart_num");
+const cardsContainer = document.querySelector('.cards__container-list');
 
 function toNum(str) {
     const num = Number(str.replace(/ /g, ""));
@@ -58,6 +59,7 @@ class Cart {
     constructor() {
         this.products = [];
     }
+
     get count() {
         let total = 0;
         this.products.forEach((i) => {
@@ -65,6 +67,7 @@ class Cart {
         })
         return total;
     }
+
     addProduct(product) {
         if (product.type === 'grape') {
             if (product.cutting) {
@@ -80,19 +83,23 @@ class Cart {
             this.products.push(product);
         }
     }
+
     increaseCountOfProduct(product) {
         product.quantity++;
         return product.quantity;
     }
+
     reduceCountOfproduct(product) {
         if (product.quantity > 1) {
             product.quantity--;
             return product.quantity;
         }
     }
+
     removeProduct(index) {
       this.products.splice(this.products.indexOf(index), 1);
     }
+
     get cost() {
         const prices = this.products.map((product) => {
             let price = 0;
@@ -155,13 +162,13 @@ function popupContainerFill() {
 
         const counter = document.createElement("div");
         counter.classList.add("popup__product-wrap");
-        counter.classList.add("busket-item-counter");
+        counter.classList.add("busket-item-cutting-counter");
 
-        const reduseBtn = document.createElement("button");
-        reduseBtn.classList.add("busket-item-count_btn");
-        reduseBtn.classList.add("busket-item-count_minus");
-        reduseBtn.setAttribute("type", "button");
-        reduseBtn.innerHTML = "–";
+        const reduceBtn = document.createElement("button");
+        reduceBtn.classList.add("busket-item-count_btn");
+        reduceBtn.classList.add("busket-item-count_minus");
+        reduceBtn.setAttribute("type", "button");
+        reduceBtn.innerHTML = "–";
 
         const inputCount = document.createElement("input");
         inputCount.classList.add("busket-item-count_input");
@@ -180,9 +187,21 @@ function popupContainerFill() {
             cartNum.textContent = myCart.count;
             localStorage.setItem("cart", JSON.stringify(myCart));
             popupContainerFill();
+            let name
+            if (product.type === 'grape' && product.cutting) {
+                name = product.name.split(' черенок').splice(0, 1).toString();
+            } else if (product.type === 'grape' && !product.cutting) {
+                name = product.name.split(' саженец').splice(0, 1).toString();
+            }
+            console.log(name)
+            document.querySelectorAll('.card').forEach((i) => {
+                if (i.querySelector('.card__title').textContent === name) {
+                    i.querySelector('.card__count-input-cutting').value = quantityOfProduct;
+                }
+            })
         })
 
-        reduseBtn.addEventListener("click", () => {
+        reduceBtn.addEventListener("click", () => {
             let quantityOfProduct = myCart.reduceCountOfproduct(product);
             inputCount.value = quantityOfProduct;
             cartNum.textContent = myCart.count;
@@ -203,7 +222,7 @@ function popupContainerFill() {
 
         productWrap1.appendChild(productImage);
         productWrap1.appendChild(productTitle);
-        counter.appendChild(reduseBtn);
+        counter.appendChild(reduceBtn);
         counter.appendChild(inputCount);
         counter.appendChild(incrBtn);
         productWrap2.appendChild(productPrice);
@@ -214,17 +233,6 @@ function popupContainerFill() {
         productItem.appendChild(productWrap3);
 
         return productItem;
-    });
-
-    const clearCart = document.querySelector(".popup__busket_clear-btn");
-
-    clearCart.addEventListener("click", () => {
-        myCart.products.forEach((product) => {
-            myCart.products.splice(product);
-        })
-        localStorage.setItem("cart", JSON.stringify(myCart));
-        cartNum.textContent = myCart.count;
-        popupContainerFill();
     });
 
     productsHTML.forEach((productHTML) => {

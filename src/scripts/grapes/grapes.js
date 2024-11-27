@@ -8,6 +8,7 @@ const cardsContainer = document.querySelector('.cards__container-list');
 const page = document.querySelector('.page');
 const cart = document.querySelector('.popup__busket');
 const cartNum = document.querySelector("#cart_num");
+const clearCart = document.querySelector(".popup__busket_clear-btn");
 
 const myCart = new Cart();
 
@@ -33,6 +34,27 @@ document.querySelector('.busket').addEventListener('click', () => {
     openModal(cart, page);
     popupContainerFill();
 })
+
+clearCart.addEventListener("click", () => {
+    myCart.products.forEach((product) => {
+        myCart.products.splice(product);
+    })
+
+    cardsContainer.innerHTML = '';
+
+    localStorage.setItem("cart", JSON.stringify(myCart));
+
+    popupContainerFill();
+
+    savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    cartNum.textContent = myCart.count;
+    myCart.products = savedCart.products;
+
+    grapeCards.forEach(function(element){
+        cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
+    })
+})
+
 
 //Вывод через цикл карточек
 grapeCards.forEach(function(element){

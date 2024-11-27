@@ -240,7 +240,11 @@
   justify-content: flex-end;
 }
 
-.busket-item-counter {
+.busket-item-cutting-counter {
+  gap: 0;
+}
+
+.busket-item-vine-counter {
   gap: 0;
 }
 
@@ -263,7 +267,7 @@
 }
 
 .busket-item-count_input {
-  max-inline-size: 25px;
+  max-inline-size: 32px;
   text-align: center;
 }
 

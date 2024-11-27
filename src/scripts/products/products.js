@@ -38,36 +38,36 @@ productCards.forEach(function(element){
   cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
 })
 
-document.querySelector('.sorting__btn-perepel').addEventListener('click', (evt) => {
+document.querySelector('.sorting__btn-perepel').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
     if (element.type.includes('перепёлочка')) {
-      cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
+      cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
     }
   })
 })
 
-document.querySelector('.sorting__btn-berries').addEventListener('click', (evt) => {
+document.querySelector('.sorting__btn-berries').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
     if (element.type.includes('калинка-малинка')) {
-      cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
+      cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
     }
   })
 })
 
-document.querySelector('.sorting__btn-all').addEventListener('click', (evt) => {
+document.querySelector('.sorting__btn-all').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
-    cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
+    cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
   })
 })
 
-document.querySelector('.sorting__btn-vegetables').addEventListener('click', (evt) => {
+document.querySelector('.sorting__btn-vegetables').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
   productCards.forEach(function(element){
     if (element.type.includes('огородная братва')) {
-      cardsContainer.append(createCard(element.name, element.link, element.text, element.price, element.type))
+      cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
     }
   })
 })
