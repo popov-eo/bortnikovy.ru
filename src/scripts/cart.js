@@ -1,8 +1,9 @@
+import { deleteCounterCutting, deleteCounterVine } from "./card.js";
+
 const cart = document.querySelector('.popup__busket');
 const popupProductList = cart.querySelector('.popup__busket-list');
 const popupCost = document.querySelector("#popup_cost");
 const cartNum = document.querySelector("#cart_num");
-const cardsContainer = document.querySelector('.cards__container-list');
 
 function toNum(str) {
     const num = Number(str.replace(/ /g, ""));
@@ -173,6 +174,7 @@ function popupContainerFill() {
         const inputCount = document.createElement("input");
         inputCount.classList.add("busket-item-count_input");
         inputCount.setAttribute("type", "text");
+        inputCount.readOnly = true;
         inputCount.setAttribute("value", product.quantity);
 
         const incrBtn = document.createElement("button");
@@ -202,6 +204,12 @@ function popupContainerFill() {
                         i.querySelector('.card__count-input-vine').value = quantityOfProduct;
                     }
                 })
+            } else if (product.type === 'product') {
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === product.name) {
+                        i.querySelector('.card__count-input-cutting').value = quantityOfProduct;
+                    }
+                })
             }
         })
 
@@ -221,10 +229,15 @@ function popupContainerFill() {
                 })
             } else if (product.type === 'grape' && !product.cutting) {
                 name = product.name.split(' саженец').splice(0, 1).toString();
-                name = product.name.split(' саженец').splice(0, 1).toString();
                 document.querySelectorAll('.card').forEach((i) => {
                     if (i.querySelector('.card__title').textContent === name) {
                         i.querySelector('.card__count-input-vine').value = quantityOfProduct;
+                    }
+                })
+            } else if (product.type === 'product') {
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === product.name) {
+                        i.querySelector('.card__count-input-cutting').value = quantityOfProduct;
                     }
                 })
             }
@@ -239,6 +252,28 @@ function popupContainerFill() {
             localStorage.setItem("cart", JSON.stringify(myCart));
             cartNum.textContent = myCart.count;
             popupContainerFill();
+            let name;
+            if (product.type === 'grape' && product.cutting) {
+                name = product.name.split(' черенок').splice(0, 1).toString();
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === name) {
+                        deleteCounterCutting(i, i.querySelector(".btn__busket_price-cutting"));
+                    }
+                })
+            } else if (product.type === 'grape' && !product.cutting) {
+                name = product.name.split(' саженец').splice(0, 1).toString();
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === name) {
+                        deleteCounterVine(i, i.querySelector(".btn__busket_price-vine"));
+                    }
+                })
+            } else if (product.type === 'product') {
+                document.querySelectorAll('.card').forEach((i) => {
+                    if (i.querySelector('.card__title').textContent === product.name) {
+                        deleteCounterCutting(i, i.querySelector(".btn__busket_price-cutting"));
+                    }
+                })
+            }
         });
 
         productWrap1.appendChild(productImage);

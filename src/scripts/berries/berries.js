@@ -8,6 +8,7 @@ const cardsContainer = document.querySelector('.cards__container-list');
 const page = document.querySelector('.page');
 const cart = document.querySelector('.popup__busket');
 const cartNum = document.querySelector("#cart_num");
+const clearCart = document.querySelector(".popup__busket_clear-btn");
 
 const myCart = new Cart();
 
@@ -32,6 +33,28 @@ cartNum.textContent = myCart.count;
 document.querySelector('.busket').addEventListener('click', () => {
     openModal(cart, page);
     popupContainerFill();
+})
+
+clearCart.addEventListener("click", () => {
+    myCart.products.forEach((product) => {
+        myCart.products.splice(product);
+    })
+
+    cardsContainer.innerHTML = '';
+
+    localStorage.setItem("cart", JSON.stringify(myCart));
+
+    popupContainerFill();
+
+    savedCart = [];
+    cartNum.textContent = myCart.count;
+    myCart.products = savedCart.products;
+
+    console.log(savedCart.products)
+
+    berryCards.forEach(function(element){
+        cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.genetics, element.color, element.taste, element.maturity, element.berryWeight, element.spines, element.maintainability, element.text, element.youngPlantPrice))
+    })
 })
 
 //Вывод через цикл карточек

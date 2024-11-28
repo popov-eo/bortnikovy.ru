@@ -269,6 +269,7 @@
 .busket-item-count_input {
   max-inline-size: 32px;
   text-align: center;
+  cursor: default;
 }
 
 .popup__product-price {

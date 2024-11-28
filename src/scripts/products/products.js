@@ -8,6 +8,7 @@ const cardsContainer = document.querySelector('.cards__container-list');
 const page = document.querySelector('.page');
 const cart = document.querySelector('.popup__busket');
 const cartNum = document.querySelector("#cart_num");
+const clearCart = document.querySelector(".popup__busket_clear-btn");
 
 const myCart = new Cart();
 
@@ -32,6 +33,26 @@ cartNum.textContent = myCart.count;
 document.querySelector('.busket').addEventListener('click', () => {
   openModal(cart, page);
   popupContainerFill();
+})
+
+clearCart.addEventListener("click", () => {
+    myCart.products.forEach((product) => {
+        myCart.products.splice(product);
+    })
+
+    cardsContainer.innerHTML = '';
+
+    localStorage.setItem("cart", JSON.stringify(myCart));
+
+    popupContainerFill();
+
+    savedCart = [];
+    cartNum.textContent = myCart.count;
+    myCart.products = savedCart.products;
+
+    productCards.forEach(function(element){
+        cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
+    })
 })
 
 productCards.forEach(function(element){

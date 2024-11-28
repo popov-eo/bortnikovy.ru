@@ -46,7 +46,7 @@ clearCart.addEventListener("click", () => {
 
     popupContainerFill();
 
-    savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    savedCart = [];
     cartNum.textContent = myCart.count;
     myCart.products = savedCart.products;
 

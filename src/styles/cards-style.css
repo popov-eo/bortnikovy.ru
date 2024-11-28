@@ -113,6 +113,15 @@
   top: 50px;
 }
 
+.decor-coloss {
+  inline-size: 20px;
+  block-size: 150px;
+  background-image: url(../images/coloss_products.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .card__content {
   display: flex;
   flex-direction: column;
@@ -237,7 +246,7 @@
   font-size: 22px;
 }
 
-.btn__basket {
+.btn__busket {
   position: relative;
   padding: 8px 0;
   font-size: 18px;

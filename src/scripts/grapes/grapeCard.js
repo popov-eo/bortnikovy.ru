@@ -1,5 +1,6 @@
 import { openDescriptionPopup, openImagePopup } from './grapeModal.js';
 import { ProductGrape, Cart } from '../cart.js';
+import { deleteCounterCutting, deleteCounterVine } from '../card.js';
 
 const cardTemplate = document.querySelector('#card-template').content;
 const page = document.querySelector('.page');
@@ -51,6 +52,7 @@ function isCutting(cardElement, cartButtonCutting, productCuttingQuantity) {
     inputCount.classList.add("busket-item-count_input");
     inputCount.classList.add("card__count-input-cutting");
     inputCount.setAttribute("type", "text");
+    inputCount.readOnly = true;
     inputCount.setAttribute("value", `${productCuttingQuantity}`);
     console.log(productCuttingQuantity);
     inputCount.value = productCuttingQuantity;
@@ -88,6 +90,7 @@ function isVine(cardElement, cartButtonVine, productVineQuantity) {
     inputCount.classList.add("busket-item-count_input");
     inputCount.classList.add("card__count-input-vine");
     inputCount.setAttribute("type", "text");
+    inputCount.readOnly = true;
     inputCount.setAttribute("value", `${productVineQuantity}`);
     inputCount.value = productVineQuantity;
 
@@ -113,20 +116,6 @@ function showCounter(cardElement, cartButtonCutting, cartButtonVine, productCutt
     } else if (productVineInCart && !productCuttingInCart) {
         isVine(cardElement, cartButtonVine, productVineQuantity);
     }
-}
-
-function deleteCounterCutting(cardElement, cartButtonCutting) {
-    const priceWrapperCutting = cardElement.querySelector('.price-wrapper-cutting')
-    priceWrapperCutting.removeChild(cardElement.querySelector('.busket-item-cutting-counter'))
-
-    cartButtonCutting.classList.remove("invisible")
-}
-
-function deleteCounterVine(cardElement, cartButtonVine) {
-    const priceWrapperVine = cardElement.querySelector('.price-wrapper-vine')
-    priceWrapperVine.removeChild(cardElement.querySelector('.busket-item-vine-counter'))
-
-    cartButtonVine.classList.remove("invisible")
 }
 
 function increaseCountOfProductCutting(cardElement) {
@@ -300,16 +289,16 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         console.log(productCuttingInCart, productVineInCart)
     })
 
-    const cartButtonCutting = cardElement.querySelector(".btn__basket_price-cutting");
-    const cartButtonVine = cardElement.querySelector(".btn__basket_price-vine");
+    const cartButtonCutting = cardElement.querySelector(".btn__busket_price-cutting");
+    const cartButtonVine = cardElement.querySelector(".btn__busket_price-vine");
 
     showCounter(cardElement, cartButtonCutting, cartButtonVine, productCuttingInCart, productVineInCart, productCuttingQuantity, productVineQuantity);
 
-    cardElement.querySelector('.btn__basket_price-cutting').addEventListener('click', (evt) => {
+    cardElement.querySelector('.btn__busket_price-cutting').addEventListener('click', (evt) => {
         disableBtn(cartButtonCutting)
         setTimeout(enableBtn, 1000, cartButtonCutting);
         const card = evt.target.closest(".card");
-        const cartButton = card.querySelector(".btn__basket_price-cutting");
+        const cartButton = card.querySelector(".btn__busket_price-cutting");
         cartButton.textContent = 'Отправлено';
         cartButton.classList.remove("btn");
         cartButton.classList.add("btnForAnimation");
@@ -339,11 +328,11 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
     }
 
 
-    cardElement.querySelector('.btn__basket_price-vine').addEventListener('click', (evt) => {
+    cardElement.querySelector('.btn__busket_price-vine').addEventListener('click', (evt) => {
         disableBtn(cartButtonVine)
         setTimeout(enableBtn, 1000, cartButtonVine);
         const card = evt.target.closest(".card");
-        const cartButton = card.querySelector(".btn__basket_price-vine");
+        const cartButton = card.querySelector(".btn__busket_price-vine");
         cartButton.textContent = 'Отправлено';
         cartButton.classList.remove("btn");
         cartButton.classList.add("btnForAnimation");
