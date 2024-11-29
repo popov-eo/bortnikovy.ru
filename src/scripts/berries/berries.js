@@ -50,11 +50,11 @@ clearCart.addEventListener("click", () => {
     cartNum.textContent = myCart.count;
     myCart.products = savedCart.products;
 
-    console.log(savedCart.products)
-
     berryCards.forEach(function(element){
         cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.genetics, element.color, element.taste, element.maturity, element.berryWeight, element.spines, element.maintainability, element.text, element.youngPlantPrice))
     })
+    savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
 })
 
 //Вывод через цикл карточек
