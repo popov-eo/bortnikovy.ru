@@ -251,10 +251,6 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
     cardElement.querySelector('.acidity').textContent = acidity;
     const cardDescription = cardElement.querySelector('.card__description');
 
-    if (filterColor.includes('технический')) {
-        cardElement.querySelector('.icon-container').classList.add('wine-icon');
-    }
-
     const cardText = text;
 
     text.forEach((i) => {
@@ -285,8 +281,6 @@ function createCard(filterColor, name, link, autors, genetics, color, taste, mat
         } else if (i.name === `${name} саженец`) {
             return productVineInCart = true, productVineQuantity = i.quantity;
         }
-
-        console.log(productCuttingInCart, productVineInCart)
     })
 
     const cartButtonCutting = cardElement.querySelector(".btn__busket_price-cutting");

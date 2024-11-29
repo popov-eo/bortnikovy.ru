@@ -53,6 +53,8 @@ clearCart.addEventListener("click", () => {
     productCards.forEach(function(element){
         cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
     })
+    savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
 })
 
 productCards.forEach(function(element){

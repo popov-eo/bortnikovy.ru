@@ -107,19 +107,27 @@
 
 .decor-top {
   z-index: 0;
-  inline-size: 25px;
-  block-size: 100px;
-  right: 0;
-  top: 50px;
+  inline-size: 30px;
+  block-size: 120px;
+  right: -10px;
+  top: 0;
+  background-color: var(--button-text-color);
+  background-repeat: no-repeat;
+  background-position: 4px center;
+  background-size: 22px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .decor-coloss {
-  inline-size: 20px;
-  block-size: 150px;
+  block-size: 130px;
   background-image: url(../images/coloss_products.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 15px;
+  background-color: var(--button-text-color);
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .card__content {
@@ -260,34 +268,38 @@
 }
 
 .red-outline {
-  background-image: linear-gradient(135deg, #FF1818, #f677d5);
+  background-image: url('../images/grape_red.svg');
 }
 
 .black-outline {
-  background-image: linear-gradient(45deg, #831212, #6D3580);
+  background-image: url('../images/grape_dark.svg');
 }
 
 .pink-outline {
-  background-image: linear-gradient(135deg, #eec0c8, #F56D91);
+  background-image: url('../images/grape_pink.svg');
 }
 
 .white-outline {
-  background-image: linear-gradient(135deg,  #DCE35B, #45B649);
+  background-image: url('../images/grape_white.svg');
 
 }
 
 .technical-outline {
-  background-image: linear-gradient(315deg, #686D76, #FFFFFF, #686D76);
+  background-image: url('../images/wine.svg');
+  background-size: 20px;
+  background-position: center center;
 }
 
-.wine-icon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-image: url(../images/wine.svg);
-  background-repeat: no-repeat;
-  inline-size: 30px;
-  block-size: 80px;
+.strawberry {
+  background-image: url('../images/strawberry.svg');
+}
+
+.raspberry {
+  background-image: url('../images/raspberry.svg');
+}
+
+.blackberry {
+  background-image: url('../images/blackberry.svg');
 }
 
 .left-panel__form {

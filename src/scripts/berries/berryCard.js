@@ -219,13 +219,13 @@ function createCard(filterColor, name, link, genetics, color, taste, maturity, b
     const cardDecorTop = cardElement.querySelector('.decor-top');
 
     if (filterColor === 'клубника') {
-        cardDecorTop.classList.add('red-outline');
+        cardDecorTop.classList.add('strawberry');
         const spinesElement = cardElement.querySelector('.spines-item');
         spinesElement.classList.add('invisible');
     } else if (filterColor === 'ежевика') {
-        cardDecorTop.classList.add('black-outline');
+        cardDecorTop.classList.add('blackberry');
     } else if (filterColor === 'малина') {
-        cardDecorTop.classList.add('pink-outline');
+        cardDecorTop.classList.add('raspberry');
     }
 
     return cardElement;
