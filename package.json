@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack serve",
-    "kill-p": "kill-port 8080"
+    "kill-p": "kill-port 8080",
+    "dev": "kill-port 8080 && webpack serve"
   },
   "author": "evgeny popov",
   "license": "ISC",
