@@ -1,13 +1,12 @@
 import { openDescriptionPopup, openImagePopup } from './grapeModal.js';
-import { ProductGrape, Cart } from '../cart.js';
+import { ProductGrape } from '../cart.js';
 import { deleteCounterCutting, deleteCounterVine } from '../card.js';
+import { savedCart, myCart } from './grapes.js';
 
 const cardTemplate = document.querySelector('#card-template').content;
 const page = document.querySelector('.page');
 const cartNum = document.querySelector("#cart_num");
 const paragraphTemplate = document.querySelector('#popup__paragraph-template').content;
-
-const myCart = new Cart();
 
 function createDescription(txt) {
     const paragraphElement = paragraphTemplate.querySelector('.popup__paragraph').cloneNode(true);
@@ -54,7 +53,6 @@ function isCutting(cardElement, cartButtonCutting, productCuttingQuantity) {
     inputCount.setAttribute("type", "text");
     inputCount.readOnly = true;
     inputCount.setAttribute("value", `${productCuttingQuantity}`);
-    console.log(productCuttingQuantity);
     inputCount.value = productCuttingQuantity;
 
     const incrBtn = document.createElement("button");
@@ -226,9 +224,6 @@ function reduceCountOfProductVine(cardElement, cartButtonVine) {
         })
     })
 }
-
-const savedCart = JSON.parse(localStorage.getItem("cart"));
-myCart.products = savedCart.products;
 
 //Создание карточки
 function createCard(filterColor, name, link, autors, genetics, color, taste, maturity, bunchWeight, berryWeight, frostResistance, diseaseResistance, sugarСontent, acidity, text, priceCutting, priceVine) {

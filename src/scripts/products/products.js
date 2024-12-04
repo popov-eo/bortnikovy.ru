@@ -12,14 +12,10 @@ const clearCart = document.querySelector(".popup__busket_clear-btn");
 
 const myCart = new Cart();
 
-if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === undefined) {
-    localStorage.setItem("cart", JSON.stringify(myCart));
-}
-
-let savedCart;
+let savedCart = [];
 
 try {
-    savedCart = JSON.parse(localStorage.getItem("cart")) || []
+    savedCart = JSON.parse(localStorage.getItem("cart"));
 } catch (error) {
     console.error("Ошибка парсинга JSON:", error);
     localStorage.setItem("cart", JSON.stringify(myCart));
@@ -46,7 +42,7 @@ clearCart.addEventListener("click", () => {
 
     popupContainerFill();
 
-    savedCart = [];
+    savedCart.products = [];
     cartNum.textContent = myCart.count;
     myCart.products = savedCart.products;
 
@@ -105,3 +101,5 @@ popups.forEach((popup) => {
   // вешаем обработчик закрытия кликом по оверлею
   popup.addEventListener('mousedown', handleCloseByOverlayClick)
 })
+
+export { savedCart, myCart }

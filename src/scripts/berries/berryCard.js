@@ -1,13 +1,12 @@
 import {openImagePopup, openDescriptionPopup} from './berryModal.js';
-import {Product, Cart} from '../cart.js';
+import {Product} from '../cart.js';
 import { deleteCounterCutting } from '../card.js';
+import { savedCart, myCart } from './berries.js';
 
 const cardTemplate = document.querySelector('#card-template').content;
 const paragraphTemplate = document.querySelector('#popup__paragraph-template').content;
 const page = document.querySelector('.page');
 const cartNum = document.querySelector("#cart_num");
-
-const myCart = new Cart();
 
 function createDescription(txt) {
     const paragraphElement = paragraphTemplate.querySelector('.popup__paragraph').cloneNode(true);
@@ -54,7 +53,6 @@ function isCutting(cardElement, cartButtonCutting, productCuttingQuantity) {
     inputCount.setAttribute("type", "text");
     inputCount.readOnly = true;
     inputCount.setAttribute("value", `${productCuttingQuantity}`);
-    console.log(productCuttingQuantity);
     inputCount.value = productCuttingQuantity;
 
     const incrBtn = document.createElement("button");
@@ -130,9 +128,6 @@ function reduceCountOfProductCutting(cardElement, cartButtonCutting) {
         })
     })
 }
-
-const savedCart = JSON.parse(localStorage.getItem("cart"));
-myCart.products = savedCart.products;
 
 //Создание карточки
 function createCard(filterColor, name, link, genetics, color, taste, maturity, berryWeight, spines, maintainability, text, youngPlantPrice) {

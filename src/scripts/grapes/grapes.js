@@ -8,22 +8,18 @@ const cardsContainer = document.querySelector('.cards__container-list');
 const page = document.querySelector('.page');
 const cart = document.querySelector('.popup__busket');
 const cartNum = document.querySelector("#cart_num");
-const clearCart = document.querySelector(".popup__busket_clear-btn");
+const clearCart = document.querySelector('.popup__busket_clear-btn');
 
 const myCart = new Cart();
 
-if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === undefined) {
-    localStorage.setItem("cart", JSON.stringify(myCart));
-}
-
-let savedCart;
+let savedCart = [];
 
 try {
-    savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    savedCart = JSON.parse(localStorage.getItem("cart"));
 } catch (error) {
     console.error("Ошибка парсинга JSON:", error);
     localStorage.setItem("cart", JSON.stringify(myCart));
-    savedCart = []; // Защитное значение по умолчанию
+    savedCart.products = []; // Защитное значение по умолчанию
 };
 
 myCart.products = savedCart.products;
@@ -46,13 +42,15 @@ clearCart.addEventListener("click", () => {
 
     popupContainerFill();
 
-    savedCart = [];
+    savedCart.products = [];
     cartNum.textContent = myCart.count;
     myCart.products = savedCart.products;
+    console.log(myCart);
 
     grapeCards.forEach(function(element){
         cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
     })
+
     savedCart = JSON.parse(localStorage.getItem("cart"));
     myCart.products = savedCart.products;
 })
@@ -178,3 +176,5 @@ popups.forEach((popup) => {
 document.querySelector('.left-panel__form').addEventListener('submit', function(event) {
     event.preventDefault();
 });
+
+export { savedCart, myCart }

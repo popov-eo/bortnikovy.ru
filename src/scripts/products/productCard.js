@@ -1,13 +1,12 @@
-import {openImagePopup, openDescriptionPopup} from '../products/productModal.js';
-import {Product, Cart} from '../cart.js';
+import { openImagePopup, openDescriptionPopup } from '../products/productModal.js';
+import { Product } from '../cart.js';
 import { deleteCounterCutting } from '../card.js';
+import { savedCart, myCart } from './products.js'
 
 const cardTemplate = document.querySelector('#card-template').content;
 const paragraphTemplate = document.querySelector('#popup__paragraph-template').content;
 const page = document.querySelector('.page');
 const cartNum = document.querySelector("#cart_num");
-
-const myCart = new Cart();
 
 function createDescription(txt) {
     const paragraphElement = paragraphTemplate.querySelector('.popup__paragraph').cloneNode(true);
@@ -104,9 +103,8 @@ function reduceCountOfProductCutting(cardElement, cartButtonCutting) {
         if (cardElement === !evt.target.closest(".card")) {
             cardElement = evt.target.closest(".card");
         }
+
         const inputCountCutting = cardElement.querySelector('.card__count-input-cutting');
-        const savedCart = JSON.parse(localStorage.getItem("cart"));
-        myCart.products = savedCart.products;
 
         const name = cardElement.querySelector('.card__title').textContent;
 
@@ -131,11 +129,11 @@ function reduceCountOfProductCutting(cardElement, cartButtonCutting) {
     })
 }
 
-const savedCart = JSON.parse(localStorage.getItem("cart"));
-myCart.products = savedCart.products;
-
 function createCard(name, link, text, price){
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
+
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
 
     //Передача информации о карточки
     cardElement.querySelector('.card__img').src = link;
