@@ -19,14 +19,14 @@ if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === un
     localStorage.setItem("cart", JSON.stringify(myCart));
 }
 
-let savedCart;
+let savedCart = [];
 
 try {
     savedCart = JSON.parse(localStorage.getItem("cart")) || []
 } catch (error) {
     console.error("Ошибка парсинга JSON:", error);
     localStorage.setItem("cart", JSON.stringify(myCart));
-    savedCart = []; // Защитное значение по умолчанию
+    savedCart.products = []; // Защитное значение по умолчанию
 };
 
 myCart.products = savedCart.products;

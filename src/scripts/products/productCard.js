@@ -53,7 +53,6 @@ function isCutting(cardElement, cartButtonCutting, productCuttingQuantity) {
     inputCount.setAttribute("type", "text");
     inputCount.readOnly = true;
     inputCount.setAttribute("value", `${productCuttingQuantity}`);
-    console.log(productCuttingQuantity);
     inputCount.value = productCuttingQuantity;
 
     const incrBtn = document.createElement("button");
