@@ -36,21 +36,10 @@ class Product {
     }
 }
 
-class ProductGrape {
-    quantity;
-    type;
-    cutting;
-    imageSrc;
-    name;
-    priceCutting;
+class ProductGrape extends Product {
     priceVine;
     constructor(card, quantity, type, cutting) {
-        this.quantity = quantity;
-        this.cutting = cutting;
-        this.imageSrc = card.querySelector(".card__img").src;
-        this.name = card.querySelector(".card__title").textContent;
-        this.type = type;
-        this.priceCutting = card.querySelector(".card__price-cutting").textContent;
+        super(card, quantity, type, cutting);
         this.priceVine = card.querySelector(".card__price-vine").textContent;
     }
 }
