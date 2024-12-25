@@ -12,15 +12,19 @@ const clearCart = document.querySelector(".popup__busket_clear-btn");
 
 const myCart = new Cart();
 
+function loadCart() {
+    try {
+        savedCart = JSON.parse(localStorage.getItem("cart"));
+    } catch (error) {
+        console.error("Ошибка парсинга JSON:", error);
+        localStorage.setItem("cart", JSON.stringify(myCart));
+        savedCart = []; // Защитное значение по умолчанию
+    };
+}
+
 let savedCart = [];
 
-try {
-    savedCart = JSON.parse(localStorage.getItem("cart"));
-} catch (error) {
-    console.error("Ошибка парсинга JSON:", error);
-    localStorage.setItem("cart", JSON.stringify(myCart));
-    savedCart = []; // Защитное значение по умолчанию
-};
+loadCart();
 
 myCart.products = savedCart.products;
 cartNum.textContent = myCart.count;
@@ -57,6 +61,7 @@ productCards.forEach(function(element){
 
 document.querySelector('.sorting__btn-perepel').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
+  loadCart();
   productCards.forEach(function(element){
     if (element.type.includes('перепёлочка')) {
       cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
@@ -66,6 +71,7 @@ document.querySelector('.sorting__btn-perepel').addEventListener('click', () => 
 
 document.querySelector('.sorting__btn-berries').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
+  loadCart();
   productCards.forEach(function(element){
     if (element.type.includes('калинка-малинка')) {
       cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
@@ -75,6 +81,7 @@ document.querySelector('.sorting__btn-berries').addEventListener('click', () => 
 
 document.querySelector('.sorting__btn-all').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
+  loadCart();
   productCards.forEach(function(element){
     cardsContainer.append(createCard(element.name, element.link, element.text, element.price))
   })
@@ -82,6 +89,7 @@ document.querySelector('.sorting__btn-all').addEventListener('click', () => {
 
 document.querySelector('.sorting__btn-vegetables').addEventListener('click', () => {
   cardsContainer.innerHTML = '';
+  loadCart();
   productCards.forEach(function(element){
     if (element.type.includes('огородная братва')) {
       cardsContainer.append(createCard(element.name, element.link, element.text, element.price))

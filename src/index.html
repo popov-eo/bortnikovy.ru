@@ -13,31 +13,10 @@
     <meta property="og:title" content="Хозяйство Бортниковых: гармония и изобилие природы">
     <meta property="og:description" content="Откройте для себя место, где все растет с любовью под заботливым солнцем, и продукция радует свежестью и вкусом.">
 
-    <script>
-      function callback(token) {
-        console.log(token);
-        if (token) {
-          document
-            .querySelector('.btn-submit')
-            .classList.remove('button_inactive');
-
-            document
-            .querySelector('.btn-submit').disabled = false;
-        } else {
-          document
-            .querySelector('.btn-submit')
-            .classList.add('button_inactive');
-
-          document
-            .querySelector('.btn-submit').disabled = true;
-        }
-      }
-    </script>
-
     <script
     src="https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&onload=onloadFunction"
-    defer
-    ></script>
+    defer>
+    </script>
 
     <title>Хозяйство Бортниковых</title>
   </head>
@@ -59,6 +38,38 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/98271519" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+
+    <script>
+      const formContactUs = document.getElementById('form');
+
+      function onloadFunction() {
+        if (!window.smartCaptcha) {
+          return;
+        }
+
+        window.smartCaptcha.render('captcha-container', {
+          sitekey: 'ysc1_2caO5uumkReh1Gk54AUmdJM39aVUFikYz2PERGc91d2442e9',
+          invisible: true, // Сделать капчу невидимой
+          callback: callback,
+          shieldPosition: 'bottom-left',
+          hideShield: true
+        });
+      }
+
+      function callback(token) {
+        formContactUs.submit();
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        if (!window.smartCaptcha) {
+          return;
+        }
+
+        window.smartCaptcha.execute();
+      }
+    </script>
 
     <div class="page__wrapper">
       <header class="header">
@@ -378,7 +389,7 @@
             </div>
             <div class="section__content-wrapper">
               <h2 class="section__title">Напишите нам</h2>
-              <form class="contact-us__form" id="form" method="post" onsubmit="submitForm(event)" action="./mailer/send.php">
+              <form class="contact-us__form" id="form" method="post" onsubmit="handleSubmit()" action="./mailer/send.php">
                 <label class="contact-us__form-label" for="input-name">Ваше Имя (обязательное)
                   <input class="contact-us__input-field" id="input-name" type="text" name="name" placeholder="Иванов Иван Иванович" pattern="[a-zA-Zа-яА-ЯёЁ\-\s]{1,100}" data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" autocomplete="on" required>
                   <span class="input-error input-name-error"></span>
@@ -394,40 +405,9 @@
                 <label class="contact-us__form-label" for="input-text">Ваш вопрос или предложение (обязательное)
                   <textarea class="contact-us__form-text-field input-text" name="text" id="input-text" cols="30" rows="10" placeholder="Хотели бы приобрести у вас перепелиные яйца и лозы белого винограда" required></textarea>
                 </label>
-                <button type="submit" onsubmit="handleSubmit()" class="btn btn-submit button_inactive">Отправить</button>
+                <button type="submit" class="btn btn-submit button_inactive">Отправить</button>
                 <button type="reset" class="btn btn-reset">Сбросить</button>
-                <div id="captcha-container"></div>
-                <script>
-                  const form = document.getElementById('form');
 
-                  function onloadFunction() {
-                    if (!window.smartCaptcha) {
-                      return;
-                    }
-
-                    window.smartCaptcha.render('captcha-container', {
-                      sitekey: 'ysc1_2caO5uumkReh1Gk54AUmdJM39aVUFikYz2PERGc91d2442e9',
-                      invisible: true, // Сделать капчу невидимой
-                      callback: callback,
-                      shieldPosition: 'bottom-left',
-                      hideShield: true
-                    });
-                  }
-
-                  function callback(token) {
-                    form.submit();
-                  }
-
-                  function handleSubmit(event) {
-                    event.preventDefault();
-
-                    if (!window.smartCaptcha) {
-                      return;
-                    }
-
-                    window.smartCaptcha.execute();
-                  }
-                </script>
               </form>
             </div>
           </section>
@@ -604,6 +584,8 @@
         </div>
       </div>
     </div>
+
+    <div id="captcha-container"></div>
 
     <template id="recipe-template">
       <li class="recipe">

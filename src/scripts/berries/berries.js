@@ -12,15 +12,19 @@ const clearCart = document.querySelector(".popup__busket_clear-btn");
 
 const myCart = new Cart();
 
+function loadCart() {
+    try {
+        savedCart = JSON.parse(localStorage.getItem("cart"));
+    } catch (error) {
+        console.error("Ошибка парсинга JSON:", error);
+        localStorage.setItem("cart", JSON.stringify(myCart));
+        savedCart.products = []; // Защитное значение по умолчанию
+    };
+}
+
 let savedCart = [];
 
-try {
-    savedCart = JSON.parse(localStorage.getItem("cart"));
-} catch (error) {
-    console.error("Ошибка парсинга JSON:", error);
-    localStorage.setItem("cart", JSON.stringify(myCart));
-    savedCart.products = []; // Защитное значение по умолчанию
-};
+loadCart();
 
 myCart.products = savedCart.products;
 cartNum.textContent = myCart.count;
@@ -60,6 +64,7 @@ berryCards.forEach(function(element){
 
 document.querySelector('.sorting__btn-black').addEventListener('click', (evt) => {
     cardsContainer.innerHTML = '';
+    loadCart();
     berryCards.forEach(function(element){
         if (element.filterColor.includes('ежевика')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.genetics, element.color, element.taste, element.maturity, element.berryWeight, element.spines, element.maintainability, element.text, element.youngPlantPrice))
@@ -69,6 +74,7 @@ document.querySelector('.sorting__btn-black').addEventListener('click', (evt) =>
 
 document.querySelector('.sorting__btn-red').addEventListener('click', (evt) => {
     cardsContainer.innerHTML = '';
+    loadCart();
     berryCards.forEach(function(element){
         if (element.filterColor.includes('клубника')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.genetics, element.color, element.taste, element.maturity, element.berryWeight, element.spines, element.maintainability, element.text, element.youngPlantPrice))
@@ -78,6 +84,7 @@ document.querySelector('.sorting__btn-red').addEventListener('click', (evt) => {
 
 document.querySelector('.sorting__btn-pink').addEventListener('click', (evt) => {
     cardsContainer.innerHTML = '';
+    loadCart();
     berryCards.forEach(function(element){
         if (element.filterColor.includes('малина')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.genetics, element.color, element.taste, element.maturity, element.berryWeight, element.spines, element.maintainability, element.text, element.youngPlantPrice))
@@ -87,6 +94,7 @@ document.querySelector('.sorting__btn-pink').addEventListener('click', (evt) => 
 
 document.querySelector('.sorting__btn-all').addEventListener('click', (evt) => {
     cardsContainer.innerHTML = '';
+    loadCart();
     berryCards.forEach(function(element){
         cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.genetics, element.color, element.taste, element.maturity, element.berryWeight, element.spines, element.maintainability, element.text, element.youngPlantPrice))
     })

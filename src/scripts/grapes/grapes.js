@@ -12,15 +12,19 @@ const clearCart = document.querySelector('.popup__busket_clear-btn');
 
 const myCart = new Cart();
 
+function loadCart() {
+    try {
+        savedCart = JSON.parse(localStorage.getItem("cart"));
+    } catch (error) {
+        console.error("Ошибка парсинга JSON:", error);
+        localStorage.setItem("cart", JSON.stringify(myCart));
+        savedCart.products = []; // Защитное значение по умолчанию
+    };
+}
+
 let savedCart = [];
 
-try {
-    savedCart = JSON.parse(localStorage.getItem("cart"));
-} catch (error) {
-    console.error("Ошибка парсинга JSON:", error);
-    localStorage.setItem("cart", JSON.stringify(myCart));
-    savedCart.products = []; // Защитное значение по умолчанию
-};
+loadCart();
 
 myCart.products = savedCart.products;
 cartNum.textContent = myCart.count;
@@ -60,6 +64,7 @@ grapeCards.forEach(function(element){
 
 document.querySelector('.sorting__btn-black').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         if (element.filterColor.includes('черный')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
@@ -69,6 +74,7 @@ document.querySelector('.sorting__btn-black').addEventListener('click', () => {
 
 document.querySelector('.sorting__btn-red').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         if (element.filterColor.includes('красный')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
@@ -78,6 +84,7 @@ document.querySelector('.sorting__btn-red').addEventListener('click', () => {
 
 document.querySelector('.sorting__btn-pink').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         if (element.filterColor.includes('розовый')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
@@ -87,6 +94,7 @@ document.querySelector('.sorting__btn-pink').addEventListener('click', () => {
 
 document.querySelector('.sorting__btn-white').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         if (element.filterColor.includes('белый')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
@@ -96,6 +104,7 @@ document.querySelector('.sorting__btn-white').addEventListener('click', () => {
 
 document.querySelector('.sorting__btn-all').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
     })
@@ -103,6 +112,7 @@ document.querySelector('.sorting__btn-all').addEventListener('click', () => {
 
 document.querySelector('.sorting__btn-technical').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         if (element.filterColor.includes('технический')) {
             cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
@@ -148,11 +158,13 @@ document.querySelector('.search-input').addEventListener('click', () => {
 })
 
 document.querySelector('.search-btn').addEventListener('click', () => {
-    createSearchingCardList()
+    loadCart();
+    createSearchingCardList();
 })
 
 document.querySelector('.reset_search-btn').addEventListener('click', () => {
     cardsContainer.innerHTML = '';
+    loadCart();
     grapeCards.forEach(function(element){
         cardsContainer.append(createCard(element.filterColor, element.name, element.link, element.autors, element.genetics, element.color, element.taste, element.maturity, element.bunchWeight, element.berryWeight, element.frostResistance, element.diseaseResistance, element.sugarСontent, element.acidity, element.text, element.priceCutting, element.priceVine))
     })

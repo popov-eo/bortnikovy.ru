@@ -1,8 +1,8 @@
 <?php
 // Файлы phpmailer
-require 'mailer/PHPMailer.php';
-require 'mailer/SMTP.php';
-require 'mailer/Exception.php';
+require './PHPMailer.php';
+require './SMTP.php';
+require './Exception.php';
 
 # проверка, что ошибки нет
 if (!error_get_last()) {
@@ -12,8 +12,8 @@ if (!error_get_last()) {
     $email = $_POST['email'];
     $text = $_POST['text'];
     $file = $_FILES['myfile'];
-    
-    
+
+
     // Формирование самого письма
     $title = "Заголовок письма";
     $body = "
@@ -22,16 +22,16 @@ if (!error_get_last()) {
     <b>Почта:</b> $email<br><br>
     <b>Сообщение:</b><br>$text
     ";
-    
+
     // Настройки PHPMailer
     $mail = new PHPMailer\PHPMailer\PHPMailer();
-    
-    $mail->isSMTP();   
+
+    $mail->isSMTP();
     $mail->CharSet = "UTF-8";
     $mail->SMTPAuth   = true;
     //$mail->SMTPDebug = 2;
     $mail->Debugoutput = function($str, $level) {$GLOBALS['data']['debug'][] = $str;};
-    
+
     // Настройки вашей почты
     $mail->Host       = 'smtp.yandex.ru'; // SMTP сервера вашей почты
     $mail->Username   = 'popov-eo@yandex.ru'; // Логин на почте
@@ -39,23 +39,23 @@ if (!error_get_last()) {
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
     $mail->setFrom('username@yandex.ru', 'Name'); // Адрес самой почты и имя отправителя
-    
+
     // Получатель письма
-    $mail->addAddress('poluchatel@ya.ru');  
+    $mail->addAddress('poluchatel@ya.ru');
     $mail->addAddress('poluchatel2@gmail.com'); // Ещё один, если нужен
-    
+
     // Прикрипление файлов к письму
     if (!empty($file['name'][0])) {
         for ($i = 0; $i < count($file['tmp_name']); $i++) {
-            if ($file['error'][$i] === 0) 
+            if ($file['error'][$i] === 0)
                 $mail->addAttachment($file['tmp_name'][$i], $file['name'][$i]);
         }
     }
     // Отправка сообщения
     $mail->isHTML(true);
     $mail->Subject = $title;
-    $mail->Body = $body;    
-    
+    $mail->Body = $body;
+
     // Проверяем отправленность сообщения
     if ($mail->send()) {
         $data['result'] = "success";
@@ -65,7 +65,7 @@ if (!error_get_last()) {
         $data['info'] = "Сообщение не было отправлено. Ошибка при отправке письма";
         $data['desc'] = "Причина ошибки: {$mail->ErrorInfo}";
     }
-    
+
 } else {
     $data['result'] = "error";
     $data['info'] = "В коде присутствует ошибка";
